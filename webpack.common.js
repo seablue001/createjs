@@ -1,23 +1,11 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
 		index: './src/assets/js/index.js'
 	},
-	plugins: [
-		new ExtractTextPlugin({
-	     	filename: './static/css/style.css'
-	    }),
-	    new HtmlWebpackPlugin({
-			title: '花语月',
-	        filename: 'index.html',
-	        template: 'src/index.html',
-	        inject: 'body', 
-	        chunks: ['index'] 
-	    })
-	],
 	output: {
 		filename: './static/js/[name].bundle.js',
 		path: path.resolve(__dirname, 'dist')
@@ -30,6 +18,18 @@ module.exports = {
 	    	tweenjs: path.join(__dirname,'src')+ '/assets/lib/tweenjs-0.6.2.combined.js'
 	    }
 	},
+	plugins: [
+		new ExtractTextPlugin({
+	     	filename: './static/css/style.css'
+	    }),
+	    new HtmlWebpackPlugin({
+			title: '花语月',
+	        filename: 'index.html',
+	        template: 'src/index.html',
+	        inject: 'body', 
+	        chunks: ['index'] 
+	    }),
+    ],
 	module:{
 		rules: [
 			{
